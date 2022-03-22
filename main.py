@@ -10,7 +10,7 @@ from boto.s3.connection import S3Connection  # api token access
 
 # webhook stuff
 import os
-PORT = int(os.environ.get('PORT', 5000))  # port to listen in for the webhook
+PORT = int(os.environ.get('PORT', 80))  # port to listen in for the webhook
 
 
 
@@ -63,18 +63,19 @@ def main(TOKEN):
     # updater.start_polling()
     updater.start_webhook(listen="0.0.0.0",
                           port=int(PORT),
-                          url_path=TOKEN)
-    updater.bot.setWebhook('https://listing-telegram-bot.herokuapp.com/' + TOKEN)
+                          url_path=TOKEN,
+                          webhook_url='https://listing-telegram-bot.herokuapp.com/' + TOKEN)
+
 
     updater.idle()
 
 
 if __name__ == "__main__":
     TOKEN = ''
-    # with open("api_token.txt", 'r') as fin:
-    #     TOKEN = fin.read()
+    # TOKEN = os.environ['API_TOKEN']
+    with open("api_token.txt", 'r') as fin:
+         TOKEN = fin.read()
 
-    TOKEN = os.environ['API_TOKEN']
     # TODO: error when no file
 
     # site_parser.search_by_query(sites=['avito'], query="лего", city="nizhniy_novgorod", num_listings=5)
