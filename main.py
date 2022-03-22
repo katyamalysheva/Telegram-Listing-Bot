@@ -72,9 +72,9 @@ def main(TOKEN):
 
 if __name__ == "__main__":
     TOKEN = ''
-    # TOKEN = os.environ['API_TOKEN']
-    with open("api_token.txt", 'r') as fin:
-         TOKEN = fin.read()
+    TOKEN = os.environ['API_TOKEN']
+    # with open("api_token.txt", 'r') as fin:
+    #      TOKEN = fin.read()
 
     # TODO: error when no file
 
