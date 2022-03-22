@@ -74,7 +74,7 @@ if __name__ == "__main__":
     # with open("api_token.txt", 'r') as fin:
     #     TOKEN = fin.read()
 
-    TOKEN = S3Connection(os.environ['API_TOKEN'])
+    TOKEN = os.environ['API_TOKEN']
     # TODO: error when no file
 
     # site_parser.search_by_query(sites=['avito'], query="лего", city="nizhniy_novgorod", num_listings=5)
