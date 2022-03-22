@@ -6,6 +6,7 @@ from telegram import Update
 from telegram.ext import CallbackContext
 from telegram.ext import CommandHandler
 from telegram.ext import MessageHandler, Filters
+from boto.s3.connection import S3Connection  # api token access
 
 # webhook stuff
 import os
@@ -70,8 +71,10 @@ def main(TOKEN):
 
 if __name__ == "__main__":
     TOKEN = ''
-    with open("api_token.txt", 'r') as fin:
-        TOKEN = fin.read()
+    # with open("api_token.txt", 'r') as fin:
+    #     TOKEN = fin.read()
+
+    TOKEN = S3Connection(os.environ['API_TOKEN'])
     # TODO: error when no file
 
     # site_parser.search_by_query(sites=['avito'], query="лего", city="nizhniy_novgorod", num_listings=5)

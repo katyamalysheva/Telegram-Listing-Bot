@@ -2,3 +2,4 @@ python-telegram-bot
 lxml
 bs4
 requests
+boto
